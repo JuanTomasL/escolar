@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import {TypeOrmModule} from '@nestjs/typeorm';
 import { CiudadModule } from './ciudad/ciudad.module';
+import { Ciudad } from './ciudad/entities/ciudad.entity';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -12,11 +13,9 @@ import { CiudadModule } from './ciudad/ciudad.module';
     "username": "root",
     "password": "root",
     "database": "escolar",
-    "entities": [
-          "dist/**/**.entity{.ts,.js}"
-    ],
-    "synchronize": false
-   }),, CiudadModule ,],
+    "entities": [Ciudad],
+    "synchronize": true,
+   }), CiudadModule ,],
   controllers: [AppController],
   providers: [AppService],
 })
